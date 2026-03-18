@@ -1,0 +1,20 @@
+# Dependencias instaladas (se regeneran con npm install)
+node_modules/
+
+# Variables de entorno locales (contraseñas, etc.)
+.env
+
+# Logs
+*.log
+logs/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# IDE
+.vscode/
+.idea/

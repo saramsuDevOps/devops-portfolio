@@ -1,0 +1,46 @@
+# ============================================
+# docker-compose.yml - ORQUESTADOR DE CAJAS
+# ============================================
+# Este archivo define cómo correr nuestra aplicación con Docker
+
+version: '3.8'  # Versión del formato de docker-compose
+
+services:
+  # Nombre de nuestro servicio (podemos tener varios)
+  app:
+    # build: . = "Construye usando el Dockerfile en esta carpeta"
+    build: .
+    
+    # Nombre del contenedor cuando corra
+    container_name: portfolio-devops
+    
+    # Mapeo de puertos:
+    # "3000:3000" significa:
+    # Puerto de mi PC (izquierda) : Puerto del contenedor (derecha)
+    ports:
+      - "3000:3000"
+    
+    # Variables de entorno (configuración)
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    
+    # Política de reinicio:
+    # unless-stopped = Si se cae, reinicia automáticamente, 
+    # a menos que yo lo detenga manualmente
+    restart: unless-stopped
+    
+    # Límites de recursos (opcional pero profesional)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'      # Máximo medio procesador
+          memory: 512M     # Máximo 512 MB de RAM
+    
+    # Verificación de salud (redundante con Dockerfile, pero más específico)
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

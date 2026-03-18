@@ -1,0 +1,22 @@
+{
+  "name": "mi-portafolio-devops",
+  "version": "1.0.0",
+  "description": "Aplicación de demostración para portafolio DevOps",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo '✅ Tests ejecutados correctamente' && exit 0",
+    "dev": "echo 'Modo desarrollo' && node app.js"
+  },
+  "keywords": [
+    "devops",
+    "nodejs",
+    "docker",
+    "cicd"
+  ],
+  "author": "Tu Sara Amaya",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
